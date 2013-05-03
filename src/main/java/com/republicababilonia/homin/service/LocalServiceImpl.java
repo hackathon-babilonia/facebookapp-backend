@@ -16,8 +16,8 @@ public class LocalServiceImpl implements LocalService {
 	private LocalDAO localDAO;
 	
 	@Transactional
-	public void save(LocalTO contact) {
-		localDAO.save(contact);
+	public void save(LocalTO local) {
+		localDAO.save(local);
 	}
 
 	@Transactional
