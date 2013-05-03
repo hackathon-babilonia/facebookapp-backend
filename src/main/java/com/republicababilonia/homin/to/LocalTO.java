@@ -50,7 +50,7 @@ public class LocalTO {
 	@Column(name="DATA_CRIACAO")
 	private Date dataCriacao;
 
-	@OneToMany(fetch = FetchType.LAZY)
+	@OneToMany(fetch = FetchType.EAGER)
 	private List<VagaTO> vagas;
 	
 	

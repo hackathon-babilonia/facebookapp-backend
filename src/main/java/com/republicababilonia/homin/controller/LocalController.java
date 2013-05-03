@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.republicababilonia.homin.service.LocalService;
+import com.republicababilonia.homin.service.VagaService;
 import com.republicababilonia.homin.to.LocalTO;
 import com.republicababilonia.homin.to.RepublicaTO;
 import com.republicababilonia.homin.to.VagaTO;
@@ -19,24 +20,24 @@ public class LocalController {
 
 	@Autowired
 	private LocalService localService;
+	
+	@Autowired
+	private VagaService vagaService;
 
 	@RequestMapping("/index")
 	public @ResponseBody String listContacts(Map<String, Object> map) {
 
-		RepublicaTO rep = new RepublicaTO();
-		rep.setCidade("teste");
 
-		localService.save(rep);
+		LocalTO local = localService.findLocalById(2);
 		
 		VagaTO vaga = new VagaTO();
-		vaga.setLocal(rep);
+		vaga.setLocal(local);
 		vaga.setDescricao("descricaoTeste");
+		//vagaService.save(vaga);
 		
-		
-		List<LocalTO> place = localService.getTodosLocais();
 				
 				
-		return place.toString();
+		return vaga.toString();
 	}
 	
 	@RequestMapping("/createrepublica")
