@@ -29,6 +29,8 @@ public class LocalController {
 		localService.save(rep);
 		
 		VagaTO vaga = new VagaTO();
+		vaga.setLocal(rep);
+		vaga.setDescricao("descricaoTeste");
 		
 		
 		List<LocalTO> place = localService.getTodosLocais();
