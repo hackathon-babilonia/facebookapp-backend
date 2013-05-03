@@ -95,6 +95,12 @@
 			<artifactId>commons-pool</artifactId>
 			<version>20030825.183949</version>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.0-alpha4</version>
+		</dependency>
+
 	</dependencies>
 	<properties>
 		<org.springframework.version>3.0.2.RELEASE</org.springframework.version>

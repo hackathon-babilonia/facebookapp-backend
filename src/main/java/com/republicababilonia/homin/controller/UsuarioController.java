@@ -23,7 +23,6 @@ public class UsuarioController {
 	}
 	
 	
-	
 //
 //	@RequestMapping(value = "/json", method = RequestMethod.GET)
 //	@ResponseBody

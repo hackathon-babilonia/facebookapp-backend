@@ -26,6 +26,17 @@ public class UsuarioTO {
 	@Column(name="NOME")
 	private String nome;
 	
+	@Column(name="SOBRENOME")
+	private String sobrenome;
+	
+	public String getSobrenome() {
+		return sobrenome;
+	}
+
+	public void setSobrenome(String sobrenome) {
+		this.sobrenome = sobrenome;
+	}
+
 	@Column(name="token")
 	private String accessToken;
 
