@@ -20,7 +20,7 @@ import com.republicababilonia.homin.to.UsuarioTO;
 public class FacebookApi {
 	
 	private static String FQL = "https://graph.facebook.com/fql?q=";
-	private static String SELECT_NOME = "select%20first_name,%20last_name,%20uid%20from%20user%20where%20uid=me()";
+	private static String SELECT_NOME = "select%20first_name,last_name,pic_with_logo,uid%20from%20user%20where%20uid=me()";
 	
 	
 	
@@ -44,6 +44,7 @@ public class FacebookApi {
 	      String nome = data.get("first_name").getAsString();
 	      String sobrenome = data.get("last_name").getAsString();
 	      Long uid = data.get("uid").getAsLong();
+	      String pic = data.get("pic_with_logo").getAsString();
 	      
 	      UsuarioTO usuario = new UsuarioTO();
 	      
@@ -51,6 +52,7 @@ public class FacebookApi {
 	      usuario.setSobrenome(sobrenome);
 	      usuario.setUid(uid);
 	      usuario.setAccessToken(accessToken);
+	      usuario.setUrlFoto(pic);
 	      return usuario;
 	      
 	    } catch (Exception e) {
@@ -60,8 +62,6 @@ public class FacebookApi {
 	    
 	    
 	    return null;
-	    
-	    
 	    
 	}
 

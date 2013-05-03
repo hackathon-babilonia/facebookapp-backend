@@ -9,4 +9,5 @@ public interface LocalService {
 	public void save(LocalTO contact);
 	public List<LocalTO> getTodosLocais();
 	public void remove(Integer id);
+	public LocalTO findLocalById(Integer id);
 }

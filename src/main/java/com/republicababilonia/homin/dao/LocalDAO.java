@@ -9,4 +9,5 @@ public interface LocalDAO {
 	public void save(LocalTO local);
 	public List<LocalTO> getTodosLocais();
 	public void remove(Integer id);
+	public LocalTO findLocalById(Integer id);
 }

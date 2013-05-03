@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.republicababilonia.homin.service.LocalService;
 import com.republicababilonia.homin.to.LocalTO;
 import com.republicababilonia.homin.to.RepublicaTO;
+import com.republicababilonia.homin.to.VagaTO;
 
 @Controller
 @RequestMapping("/local")
@@ -24,7 +25,10 @@ public class LocalController {
 
 		RepublicaTO rep = new RepublicaTO();
 		rep.setCidade("teste");
+
 		localService.save(rep);
+		
+		VagaTO vaga = new VagaTO();
 		
 		
 		List<LocalTO> place = localService.getTodosLocais();
@@ -33,8 +37,17 @@ public class LocalController {
 		return place.toString();
 	}
 	
-	@RequestMapping("/create")
-	public @ResponseBody String create() {
+	@RequestMapping("/createrepublica")
+	public @ResponseBody String createLocal(String nome, String endereco, Integer numero, String cidade, String estado, String tipo) {
+		
+		RepublicaTO republica = new RepublicaTO();
+		republica.setNome(nome);
+		republica.setEndereco(endereco);
+		republica.setNumero(numero);
+		republica.setCidade(cidade);
+		republica.setEstado(estado);
+		localService.save(republica);
+		
 		return null;
 	}
 	

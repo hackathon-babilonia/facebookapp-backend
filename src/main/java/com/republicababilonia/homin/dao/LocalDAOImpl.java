@@ -32,4 +32,13 @@ public class LocalDAOImpl implements LocalDAO {
 		}
 
 	}
+	
+	public LocalTO findLocalById(Integer id) {
+		List<LocalTO> locais = (List<LocalTO>) sessionFactory.getCurrentSession().createQuery("from LocalTO where id=?").setInteger(0, id).list();
+		
+		if(locais != null && !locais.isEmpty()){
+			return locais.get(0);
+		}
+		return null;
+	}
 }

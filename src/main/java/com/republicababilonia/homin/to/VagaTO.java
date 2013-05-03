@@ -41,4 +41,54 @@ public class VagaTO {
 	private LocalTO local;
 
 
+	public Integer getId() {
+		return id;
+	}
+
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+
+	public String getPreco() {
+		return preco;
+	}
+
+
+	public void setPreco(String preco) {
+		this.preco = preco;
+	}
+
+
+	public Date getDataCriacao() {
+		return dataCriacao;
+	}
+
+
+	public void setDataCriacao(Date dataCriacao) {
+		this.dataCriacao = dataCriacao;
+	}
+
+
+	public LocalTO getLocal() {
+		return local;
+	}
+
+
+	public void setLocal(LocalTO local) {
+		this.local = local;
+	}
+
+
 }

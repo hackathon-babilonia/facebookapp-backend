@@ -29,4 +29,9 @@ public class LocalServiceImpl implements LocalService {
 	public void remove(Integer id) {
 		localDAO.remove(id);
 	}
+	
+	@Transactional
+	public LocalTO findLocalById(Integer id) {
+		return localDAO.findLocalById(id);
+	}
 }

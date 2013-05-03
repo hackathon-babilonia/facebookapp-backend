@@ -35,6 +35,9 @@ public class LocalTO {
 	@Column(name="NUMERO")
 	private Integer numero;
 	
+	@Column(name="BAIRRO")
+	private String bairro;
+	
 	@Column(name="COMPL")
 	private String complemento;
 	
@@ -113,6 +116,22 @@ public class LocalTO {
 
 	public void setDataCriacao(Date dataCriacao) {
 		this.dataCriacao = dataCriacao;
+	}
+
+	public String getBairro() {
+		return bairro;
+	}
+
+	public void setBairro(String bairro) {
+		this.bairro = bairro;
+	}
+
+	public List<VagaTO> getVagas() {
+		return vagas;
+	}
+
+	public void setVagas(List<VagaTO> vagas) {
+		this.vagas = vagas;
 	}
 
 
