@@ -9,50 +9,50 @@ import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 
-import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.republicababilonia.homin.to.UsuarioTO;
 
 public class FacebookApi {
 	
+	private static String FQL = "https://graph.facebook.com/fql?q=";
+	private static String SELECT_NOME = "select%20first_name,%20last_name,%20uid%20from%20user%20where%20uid=me()";
 	
 	
-	public UsuarioTO getUsuario(String uid, String accessToken) {
-		String nome;
-		String sobrenome;
+	
+	public static UsuarioTO getUsuario(String accessToken) {
 		
 		HttpClient client = new DefaultHttpClient();
 		StringBuffer sb = new StringBuffer();
 	    try {
-	    	HttpPost post = new HttpPost("http://vogellac2dm.appspot.com/register");
-	      List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
-	      nameValuePairs.add(new BasicNameValuePair("registrationid", "123456789"));
-	      post.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-	 
-	      HttpResponse response = client.execute(post);
-	      BufferedReader rd = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
-	      String line = "";
-	      while ((line = rd.readLine()) != null) {
-	        sb.append(line);
-	      }
-	      
+		    HttpGet get = new HttpGet(FQL+SELECT_NOME+"&access_token="+accessToken);
+		    HttpResponse response = client.execute(get);
+		    BufferedReader rd = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
+		    String line = "";
+		    while ((line = rd.readLine()) != null) {
+		    	sb.append(line);
+		    }
 	      
 	      JsonObject obj = new JsonParser().parse(sb.toString()).getAsJsonObject();
 	      
 	      JsonObject data = obj.getAsJsonArray("data").get(0).getAsJsonObject();
 	      
-	      nome = data.get("first_name").getAsString();
-	      sobrenome = data.get("last_name").getAsString();
+	      String nome = data.get("first_name").getAsString();
+	      String sobrenome = data.get("last_name").getAsString();
+	      Long uid = data.get("uid").getAsLong();
 	      
 	      UsuarioTO usuario = new UsuarioTO();
 	      
 	      usuario.setNome(nome);
 	      usuario.setSobrenome(sobrenome);
+	      usuario.setUid(uid);
+	      usuario.setAccessToken(accessToken);
+	      return usuario;
+	      
 	    } catch (Exception e) {
 	      e.printStackTrace();
 	    }

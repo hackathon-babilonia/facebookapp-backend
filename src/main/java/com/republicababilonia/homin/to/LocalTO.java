@@ -2,11 +2,14 @@ package com.republicababilonia.homin.to;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -44,6 +47,9 @@ public class LocalTO {
 	@Column(name="DATA_CRIACAO")
 	private Date dataCriacao;
 
+	@OneToMany(fetch = FetchType.LAZY)
+	private List<VagaTO> vagas;
+	
 	
 	public Integer getId() {
 		return id;

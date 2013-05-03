@@ -23,6 +23,9 @@ public class UsuarioTO {
 	@GeneratedValue
 	private Integer id;
 
+	@Column(name="UID")
+	private Long uid;
+	
 	@Column(name="NOME")
 	private String nome;
 	
@@ -95,6 +98,14 @@ public class UsuarioTO {
 
 	public void setUrlFoto(String urlFoto) {
 		this.urlFoto = urlFoto;
+	}
+
+	public Long getUid() {
+		return uid;
+	}
+
+	public void setUid(Long uid) {
+		this.uid = uid;
 	}
 
 
