@@ -6,8 +6,11 @@
  
 <hibernate-configuration>
     <session-factory>
-        <property name="hbm2ddl.auto">create</property>
-        <mapping class="com.republicababilonia.homin.form.Contact" />
+        <property name="hbm2ddl.auto">update</property>
+        <mapping class="com.republicababilonia.homin.to.LocalTO" />
+        <mapping class="com.republicababilonia.homin.to.PensionatoTO" />
+        <mapping class="com.republicababilonia.homin.to.RepublicaTO" />
+        
     </session-factory>
 	    
 </hibernate-configuration>
