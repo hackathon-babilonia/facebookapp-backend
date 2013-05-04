@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.republicababilonia.homin.dao.LocalDAO;
 import com.republicababilonia.homin.to.LocalTO;
+import com.republicababilonia.homin.to.VagaTO;
 
 @Service
 public class LocalServiceImpl implements LocalService {
@@ -35,10 +36,4 @@ public class LocalServiceImpl implements LocalService {
 		return localDAO.findLocalById(id);
 	}
 
-	public List<LocalTO> getLocaisByFilters(String vagatipo, String genero,
-			Double precode, Double precoate, String veiculo, Double distancia) {
-		
-		
-		return null;
-	}
 }

@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.republicababilonia.homin.utils.Constantes;
+
 @Entity
 @Table(name="LOCAL")
 public class LocalTO {
@@ -66,8 +68,30 @@ public class LocalTO {
 	@Column(name="LONGITUDE")
 	private Double longitude;
 	
+	@Column(name="UNIVERSIDADE")
+	private String universidade;
+	
 	@OneToMany(fetch = FetchType.EAGER)
 	private List<VagaTO> vagas;
+	
+	public Double getDistanceFromUniversity(Double distance){
+		Double latitude;
+		Double longitude;
+		
+		if(universidade.equals("UNICAMP")){
+			latitude = Constantes.UNIVERSIDADE_COORDS.get(Constantes.UNICAMP).get(Constantes.LATITUDE);
+			longitude = Constantes.UNIVERSIDADE_COORDS.get(Constantes.UNICAMP).get(Constantes.LONGITUDE);
+		}else if (universidade.equals("ITA")){
+			latitude = Constantes.UNIVERSIDADE_COORDS.get(Constantes.ITA).get(Constantes.LATITUDE);
+			longitude = Constantes.UNIVERSIDADE_COORDS.get(Constantes.ITA).get(Constantes.LONGITUDE);
+		}else if (universidade.equals("USP")){
+			latitude = Constantes.UNIVERSIDADE_COORDS.get(Constantes.USP).get(Constantes.LATITUDE);
+			longitude = Constantes.UNIVERSIDADE_COORDS.get(Constantes.USP).get(Constantes.LONGITUDE);
+		}
+		
+		
+		return null;
+	}
 	
 	public String getTipo() {
 		return tipo;

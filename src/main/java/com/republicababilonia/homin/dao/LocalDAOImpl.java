@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.republicababilonia.homin.to.LocalTO;
+import com.republicababilonia.homin.to.VagaTO;
 
 @Repository
 public class LocalDAOImpl implements LocalDAO {
@@ -43,13 +44,14 @@ public class LocalDAOImpl implements LocalDAO {
 		}
 		return null;
 	}
-	public List<LocalTO> getLocaisByFilters(String vagatipo, String genero, Double precode, Double precoate, String veiculo, Double distancia){
+	public List<LocalTO> getLocaisByFilters(String vagatipo, String genero, Double precode, Double precoate, Double distancia, String faculdade){
 		Criteria query = sessionFactory.getCurrentSession().createCriteria(LocalTO.class);
-		query.add(Restrictions.eq("local.tipo", vagatipo));
+		query.add(Restrictions.eq("tipo", vagatipo));
 		query.add(Restrictions.between("preco", precode.toString(), precoate.toString()));
+		query.add(Restrictions.eq("sexo", genero));
+		query.add(Restrictions.eq("universidade", faculdade));
 		
-		
-		return null;
+		return (List<LocalTO>)query.list();
 	}
 	
 }
