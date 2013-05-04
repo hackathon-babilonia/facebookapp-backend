@@ -26,7 +26,6 @@ public class LocalTO {
 		this.dataCriacao = Calendar.getInstance().getTime();
 		this.tipo = tipo;
 	}
-	
 	public LocalTO() {
 		this.dataCriacao = Calendar.getInstance().getTime();
 	}
@@ -75,13 +74,34 @@ public class LocalTO {
 	@Column(name="UNIVERSIDADE")
 	private String universidade;
 	
+	@Column(name="DISTANCIA")
+	private Double distance;
+	
 	@OneToMany(fetch = FetchType.EAGER, mappedBy="local")
 	private List<VagaTO> vagas;
 	
-	public Double getDistanceFromUniversity(Double distance){
-		Double latitude;
-		Double longitude;
-		
+	public String getUniversidade() {
+		return universidade;
+	}
+
+	public void setUniversidade(String universidade) {
+		this.universidade = universidade;
+	}
+
+	public Double getDistance() {
+		return distance;
+	}
+
+	public void setDistance(Double distance) {
+		this.distance = distance;
+	}
+
+	
+	public void setDistanceFromUniversity(){
+		Double latitude = new Double(0);
+		Double longitude= new Double(0);
+		Double distancia= new Double(0);
+		universidade = "UNICAMP";
 		if(universidade.equals("UNICAMP")){
 			latitude = Constantes.UNIVERSIDADE_COORDS.get(Constantes.UNICAMP).get(Constantes.LATITUDE);
 			longitude = Constantes.UNIVERSIDADE_COORDS.get(Constantes.UNICAMP).get(Constantes.LONGITUDE);
@@ -92,9 +112,9 @@ public class LocalTO {
 			latitude = Constantes.UNIVERSIDADE_COORDS.get(Constantes.USP).get(Constantes.LATITUDE);
 			longitude = Constantes.UNIVERSIDADE_COORDS.get(Constantes.USP).get(Constantes.LONGITUDE);
 		}
-		
-		
-		return null;
+		distancia = Math.sqrt((latitude  - this.latitude)*(latitude  - this.latitude) + (longitude  - this.longitude)*(longitude - this.longitude)); 
+		distancia = distancia * 111200.0;
+		this.distance = distancia;
 	}
 	
 	public String getTipo() {

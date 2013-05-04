@@ -50,7 +50,7 @@ public class VagaServiceImpl implements VagaService {
 		}
 		distancia = tempo*velocidade;
 		
-		return localDAO.getLocaisByFilters(vagatipo, genero, precode, precoate, distancia, faculdade);
+		return localDAO.getLocaisByFilters(vagatipo, genero,distancia, faculdade);
 	}
 	
 	@Transactional
