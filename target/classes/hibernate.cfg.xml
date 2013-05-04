@@ -8,8 +8,10 @@
     <session-factory>
         <property name="hbm2ddl.auto">update</property>
         <mapping class="com.republicababilonia.homin.to.LocalTO" />
-        <mapping class="com.republicababilonia.homin.to.PensionatoTO" />
-        <mapping class="com.republicababilonia.homin.to.RepublicaTO" />
+        <mapping class="com.republicababilonia.homin.to.PlaceTO" />
+        <mapping class="com.republicababilonia.homin.to.VagaTO" />
+        <mapping class="com.republicababilonia.homin.to.UsuarioTO" />
+        <mapping class="com.republicababilonia.homin.to.RecomendacaoTO" />
         
     </session-factory>
 	    
