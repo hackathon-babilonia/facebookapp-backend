@@ -75,5 +75,62 @@ public class LocalController {
 		return callback+"("+response+")";
 	}
 	
+	@RequestMapping("/infowindow")
+	public @ResponseBody String infoWindow(Integer localId, String callback) {
+		
+		LocalTO local = localService.findLocalById(localId);
+		
+		StringBuffer sb = new StringBuffer();
+		String enderecoFormatado = null;
+		String sexoTipoDistanciaUniversidade = null;
+		
+		enderecoFormatado = local.getEndereco() + ", " + local.getNumero() + ", " + local.getBairro() + ", " + local.getCidade() + " - " +local.getEstado();
+		
+		if(local.getSexo().equalsIgnoreCase("m")) {
+			sexoTipoDistanciaUniversidade = "Male ";
+		} else if(local.getSexo().equalsIgnoreCase("f")) {
+			sexoTipoDistanciaUniversidade = "Female ";
+		} else {
+			sexoTipoDistanciaUniversidade = "Unisex ";
+		}
+		
+		if(local.getTipo() == 0) {
+			sexoTipoDistanciaUniversidade += "Fraternity";
+		} else if(local.getTipo() == 1) {
+			sexoTipoDistanciaUniversidade += "Flat";
+		} else {
+			sexoTipoDistanciaUniversidade += "Boarding House";
+		}
+		
+		sexoTipoDistanciaUniversidade += " - ";
+		sexoTipoDistanciaUniversidade += local.getDistance().intValue();
+		sexoTipoDistanciaUniversidade += " to "+local.getUniversidade();
+		
+		sb.append("<div class=\"infowindow\">");
+		sb.append("<div class=\"titulo\">");
+		sb.append("nomeDaVaga");
+		sb.append("</div>");
+		sb.append("<div class=\"leftColumn\">");
+		sb.append("<img src=\""+"url"+"\" />");
+		sb.append("</div>");
+		sb.append("<div class=\"rightColumn\">");
+		sb.append("<span>"+enderecoFormatado +"</span><br/><br/>");
+		sb.append("<span>"+sexoTipoDistanciaUniversidade+"</span>");
+		sb.append("</div>");
+		sb.append("<div class=\"vagaOdd\">");
+		sb.append("<div>");
+		sb.append("<span class=\"infoLabel\">Preço: </span><span>R$"+local.getVagas().get(0).getPreco()+"</span>");
+		sb.append("</div>");
+		sb.append("<div>");
+		sb.append("<span class=\"infoLabel\">Descrição: </span><span>"+local.getVagas().get(0).getDescricao()+"</span>");
+		sb.append("</div>");
+		sb.append("</div>");
+		sb.append("</div>");
+		
+		JsonObject obj = new JsonObject();
+		obj.addProperty("content", sb.toString());
+		return callback+"("+obj.toString()+")";
+		
+	}
 	
 }
