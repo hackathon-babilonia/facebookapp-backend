@@ -11,5 +11,5 @@ public interface LocalService {
 	public List<LocalTO> getTodosLocais();
 	public void remove(Integer id);
 	public LocalTO findLocalById(Integer id);
-	public List<LocalTO> getLocaisByFilters(String vagatipo, String genero,Double precode, Double precoate, Long veiculo, Double tempo, String faculdade);
+	public List<LocalTO> getLocaisByFilters(Long vagatipo, String genero,Double precode, Double precoate, Long veiculo, Double tempo, String faculdade);
 }

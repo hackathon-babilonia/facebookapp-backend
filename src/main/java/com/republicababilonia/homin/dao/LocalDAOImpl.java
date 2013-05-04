@@ -43,7 +43,7 @@ public class LocalDAOImpl implements LocalDAO {
 		}
 		return null;
 	}
-	public List<LocalTO> getLocaisByFilters(String vagatipo, String genero, Double distancia, String faculdade){
+	public List<LocalTO> getLocaisByFilters(Long vagatipo, String genero, Double distancia, String faculdade){
 		Criteria query = sessionFactory.getCurrentSession().createCriteria(LocalTO.class);
 		if(!vagatipo.equals(""))
 			query.add(Restrictions.eq("tipo", vagatipo));

@@ -43,7 +43,7 @@ public class LocalController {
 	}
 	
 	@RequestMapping("/createlocal")
-	public @ResponseBody String createLocal(String nome, String sexo, String endereco, Integer numero,String complemento, String bairro, String cidade, String estado, String tipo, Double latitude, Double longitude, HttpServletRequest request) {
+	public @ResponseBody String createLocal(String nome, String sexo, String endereco, Integer numero,String complemento, String bairro, String cidade, String estado, Long tipo, Double latitude, Double longitude, HttpServletRequest request) {
 		
 		LocalTO local = new LocalTO(tipo);
 		local.setNome(nome);
@@ -65,7 +65,7 @@ public class LocalController {
 	}
 	
 	@RequestMapping("/searchVagas")
-	public @ResponseBody String searchVagas(String vagatipo, String genero, Double precode, Double precoate, Long veiculo, Double tempo, HttpServletRequest request) {
+	public @ResponseBody String searchVagas(Long vagatipo, String genero, Double precode, Double precoate, Long veiculo, Double tempo, HttpServletRequest request) {
 		Gson js = new Gson();
 		ObjectMapper obj = new ObjectMapper();
 		String response = new String();

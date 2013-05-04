@@ -22,7 +22,7 @@ public class LocalTO {
 	public static String PENSIONATO = "PENSIONATO";
 	public static String APARTAMENTO = "APARTAMENTO";
 	
-	public LocalTO(String tipo) {
+	public LocalTO(Long tipo) {
 		this.dataCriacao = Calendar.getInstance().getTime();
 		this.tipo = tipo;
 	}
@@ -63,7 +63,7 @@ public class LocalTO {
 	private String sexo;
 	
 	@Column(name="TIPO")
-	private String tipo;
+	private Long tipo;
 	
 	@Column(name="LATITUDE")
 	private Double latitude;
@@ -117,12 +117,12 @@ public class LocalTO {
 		this.distance = distancia;
 	}
 	
-	public String getTipo() {
+	public Long getTipo() {
 		return tipo;
 	}
 
 
-	public void setTipo(String tipo) {
+	public void setTipo(Long tipo) {
 		this.tipo = tipo;
 	}
 	
