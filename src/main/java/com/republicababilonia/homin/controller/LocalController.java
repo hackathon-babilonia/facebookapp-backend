@@ -38,19 +38,21 @@ public class LocalController {
 		return vaga.toString();
 	}
 	
-//	@RequestMapping("/createrepublica")
-//	public @ResponseBody String createLocal(String nome, String endereco, Integer numero, String cidade, String estado, String tipo) {
-//		
-//		RepublicaTO republica = new RepublicaTO();
-//		republica.setNome(nome);
-//		republica.setEndereco(endereco);
-//		republica.setNumero(numero);
-//		republica.setCidade(cidade);
-//		republica.setEstado(estado);
-//		localService.save(republica);
-//		
-//		return null;
-//	}
+	@RequestMapping("/createlogal")
+	public @ResponseBody String createLocal(String nome, String endereco, Integer numero, String cidade, String estado, String tipo, Double latitude, Double longitude) {
+		
+		LocalTO local = new LocalTO(tipo);
+		local.setNome(nome);
+		local.setEndereco(endereco);
+		local.setNumero(numero);
+		local.setCidade(cidade);
+		local.setEstado(estado);
+		local.setLatitude(latitude);
+		local.setLongitude(longitude);
+		localService.save(local);
+		
+		return null;
+	}
 	
 	
 	

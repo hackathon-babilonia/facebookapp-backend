@@ -60,7 +60,12 @@ public class LocalTO {
 	@Column(name="TIPO")
 	private String tipo;
 	
-
+	@Column(name="LATITUDE")
+	private Double latitude;
+	
+	@Column(name="LONGITUDE")
+	private Double longitude;
+	
 	@OneToMany(fetch = FetchType.EAGER)
 	private List<VagaTO> vagas;
 	
@@ -159,6 +164,26 @@ public class LocalTO {
 
 	public void setSexo(String sexo) {
 		this.sexo = sexo;
+	}
+
+
+	public Double getLatitude() {
+		return latitude;
+	}
+
+
+	public void setLatitude(Double latitude) {
+		this.latitude = latitude;
+	}
+
+
+	public Double getLongitude() {
+		return longitude;
+	}
+
+
+	public void setLongitude(Double longitude) {
+		this.longitude = longitude;
 	}
 
 }

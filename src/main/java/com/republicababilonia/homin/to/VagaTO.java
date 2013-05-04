@@ -30,7 +30,7 @@ public class VagaTO {
 	private String descricao;
 
 	@Column(name="PRECO")
-	private String preco;
+	private Double preco;
 	
 	@Column(name="DATA_CRIACAO")
 	private Date dataCriacao;
@@ -60,12 +60,12 @@ public class VagaTO {
 	}
 
 
-	public String getPreco() {
+	public Double getPreco() {
 		return preco;
 	}
 
 
-	public void setPreco(String preco) {
+	public void setPreco(Double preco) {
 		this.preco = preco;
 	}
 
