@@ -14,6 +14,7 @@ import com.republicababilonia.homin.service.LocalService;
 import com.republicababilonia.homin.service.VagaService;
 import com.republicababilonia.homin.to.LocalTO;
 import com.republicababilonia.homin.to.UsuarioTO;
+import com.republicababilonia.homin.to.VagaTO;
 
 @Controller
 @RequestMapping("/local")
@@ -26,7 +27,7 @@ public class LocalController {
 	private VagaService vagaService;
 
 	@RequestMapping("/createlocal")
-	public @ResponseBody String createLocal(String nome, String sexo, String endereco, Integer numero,String complemento, String bairro, String cidade, String estado, Long tipo, Double latitude, Double longitude, String callback, HttpServletRequest request) {
+	public @ResponseBody String createLocal(String nome, String sexo, String endereco, Integer numero,String complemento, String bairro, String cidade, String estado, Long tipo, Double latitude, Double longitude, String callback,String descricao, Double preco, HttpServletRequest request) {
 		
 		UsuarioTO usuario = (UsuarioTO)request.getSession().getAttribute("USUARIO");
 		LocalTO local = new LocalTO(tipo);
@@ -45,6 +46,16 @@ public class LocalController {
 		local.setUniversidade(usuario.getUniversidade());
 		local.setDistanceFromUniversity();
 		localService.save(local);
+		
+		VagaTO vaga = new VagaTO();
+		
+		vaga.setDescricao(descricao);
+		vaga.setPreco(preco);
+		
+		LocalTO local2 = localService.findLocalById(local.getId());
+		vaga.setLocal(local2);
+		
+		vagaService.save(vaga);
 		
 		JsonObject obj = new JsonObject();
 		obj.addProperty("result", "SUCCESS");
