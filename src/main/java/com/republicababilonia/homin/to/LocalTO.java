@@ -27,6 +27,10 @@ public class LocalTO {
 		this.tipo = tipo;
 	}
 	
+	public LocalTO() {
+		this.dataCriacao = Calendar.getInstance().getTime();
+	}
+	
 	@Id
 	@Column(name="ID")
 	@GeneratedValue
@@ -71,7 +75,7 @@ public class LocalTO {
 	@Column(name="UNIVERSIDADE")
 	private String universidade;
 	
-	@OneToMany(fetch = FetchType.EAGER)
+	@OneToMany(fetch = FetchType.EAGER, mappedBy="local")
 	private List<VagaTO> vagas;
 	
 	public Double getDistanceFromUniversity(Double distance){

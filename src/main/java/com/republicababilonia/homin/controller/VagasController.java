@@ -67,14 +67,34 @@ public class VagasController {
 		for(String toId : toIds) {
 			RecomendacaoTO recomendacao = new RecomendacaoTO();
 			recomendacao.setRecomendador(usuario);
-			recomendacao.setRecomendadoId(toId);
+			recomendacao.setRequestId(idRequest.toString());
+			recomendacao.setRecomendadoUId(new Long(toId));
 			recomendacao.setVaga(vagaService.findVagaById(idVaga));
+			vagaService.saveRecomendacao(recomendacao);
 		}
 		
 		
-		
-		
-		return null;
+		return "SUCCESS";
 	}
+	
+	@RequestMapping("/getrecomendacao")
+	public @ResponseBody String getRecomendacao(String reqId, HttpServletRequest request) {
+		UsuarioTO usuario = (UsuarioTO)request.getSession().getAttribute("USUARIO");
+		RecomendacaoTO recomendacao = vagaService.getRecomendacao(reqId, usuario.getUid());
+		
+		return "SUCCESS";
+		
+	}
+	
+	@RequestMapping("/teste")
+	public @ResponseBody String teste() {
+		@SuppressWarnings("unused")
+		LocalTO local = localService.findLocalById(2);
+		
+		
+		return "SUCCESS";
+		
+	}
+			
 
 }

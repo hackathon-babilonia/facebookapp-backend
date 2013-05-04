@@ -28,4 +28,9 @@ public class UsuarioServiceImpl implements UsuarioService {
 	public Boolean existeUsuario(Long uId){
 		return usuarioDAO.existeUsuario(uId);
 	}
+	
+	@Transactional
+	public UsuarioTO findUsuarioByUId(Long uId) {
+		return usuarioDAO.findUsuarioByUId(uId);
+	}
 }

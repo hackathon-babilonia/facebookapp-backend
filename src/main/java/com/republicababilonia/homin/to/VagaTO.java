@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 @Entity
 @Table(name="VAGAS")
 public class VagaTO {
@@ -35,6 +37,7 @@ public class VagaTO {
 	@Column(name="DATA_CRIACAO")
 	private Date dataCriacao;
 	
+	@JsonIgnore
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "LOCAL_ID", nullable = false)
 	private LocalTO local;

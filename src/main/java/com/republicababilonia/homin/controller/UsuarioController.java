@@ -2,12 +2,14 @@ package com.republicababilonia.homin.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.codehaus.jackson.map.JsonSerializer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.republicababilonia.homin.api.FacebookApi;
 import com.republicababilonia.homin.service.UsuarioService;
 import com.republicababilonia.homin.to.UsuarioTO;
@@ -36,11 +38,16 @@ public class UsuarioController {
 		user.setUniversidade(universidade);
 		if(!usuarioService.existeUsuario(user.getUid())) {
 			usuarioService.save(user);
+		} else {
+			user = usuarioService.findUsuarioByUId(user.getUid());
 		}
+
 		
 		request.getSession().setAttribute("USUARIO", user);
 		String retorno = new Gson().toJson(user);
-		return retorno;
+		JsonObject obj = new JsonObject();
+		obj.addProperty("result", "SUCCESS");
+		return obj.toString();
 	}
 	
 	
