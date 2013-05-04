@@ -33,7 +33,6 @@ public class UsuarioController {
 			universidade = "ITA";
 		}
 		
-		
 		UsuarioTO user = FacebookApi.getUsuario(access_token);
 		user.setUniversidade(universidade);
 		if(!usuarioService.existeUsuario(user.getUid())) {

@@ -41,9 +41,10 @@ public class LocalServiceImpl implements LocalService {
 	@Transactional
 	public List<LocalTO> getLocaisByFilters(Long vagatipo, String genero,
 			Double precode, Double precoate, Long veiculo, Double tempo, String faculdade) {
+		
+		tempo = tempo*60;
 		Double velocidade = new Double(0);
 		Double distancia = new Double(0);
-		Constantes constante = new Constantes();
 		List<LocalTO> lista;
 		List<LocalTO> responseList = new ArrayList<LocalTO>();
 		List<VagaTO> listvaga = new ArrayList<VagaTO>();

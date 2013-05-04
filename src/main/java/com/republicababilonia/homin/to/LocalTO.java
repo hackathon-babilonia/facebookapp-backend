@@ -9,8 +9,12 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 import com.republicababilonia.homin.utils.Constantes;
 
@@ -76,6 +80,11 @@ public class LocalTO {
 	
 	@Column(name="DISTANCIA")
 	private Double distance;
+	
+	@JsonIgnore
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "USUARIO_ID", nullable = false)
+	private UsuarioTO usuario;
 	
 	@OneToMany(fetch = FetchType.EAGER, mappedBy="local")
 	private List<VagaTO> vagas;
@@ -232,6 +241,12 @@ public class LocalTO {
 
 	public void setLongitude(Double longitude) {
 		this.longitude = longitude;
+	}
+	public UsuarioTO getUsuario() {
+		return usuario;
+	}
+	public void setUsuario(UsuarioTO usuario) {
+		this.usuario = usuario;
 	}
 
 }
