@@ -52,4 +52,8 @@ public class VagaServiceImpl implements VagaService {
 		return localDAO.getLocaisByFilters(vagatipo, genero, precode, precoate, distancia, faculdade);
 	}
 	
+	public VagaTO findVagaById(Integer id) {
+		return vagaDAO.findVagaById(id);
+	}
+	
 }

@@ -38,7 +38,7 @@ public class LocalController {
 		return vaga.toString();
 	}
 	
-	@RequestMapping("/createlogal")
+	@RequestMapping("/createlocal")
 	public @ResponseBody String createLocal(String nome, String endereco, Integer numero, String cidade, String estado, String tipo, Double latitude, Double longitude) {
 		
 		LocalTO local = new LocalTO(tipo);

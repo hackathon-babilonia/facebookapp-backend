@@ -6,4 +6,5 @@ public interface UsuarioService {
 	
 	public void save(UsuarioTO usuario);
 	public void remove(Integer id);
+	public Boolean existeUsuario(Long uId);
 }

@@ -1,5 +1,10 @@
 package com.republicababilonia.homin.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,6 +14,8 @@ import com.google.gson.Gson;
 import com.republicababilonia.homin.service.LocalService;
 import com.republicababilonia.homin.service.VagaService;
 import com.republicababilonia.homin.to.LocalTO;
+import com.republicababilonia.homin.to.RecomendacaoTO;
+import com.republicababilonia.homin.to.UsuarioTO;
 import com.republicababilonia.homin.to.VagaTO;
 
 @Controller
@@ -41,6 +48,33 @@ public class VagasController {
 		
 		return "SUCCESS";
 		
+	}
+	
+	@RequestMapping("/recomendar")
+	public @ResponseBody String recomendar(Long idRequest, String to, Integer idVaga, HttpServletRequest request) {
+		
+		UsuarioTO usuario = (UsuarioTO)request.getSession().getAttribute("USUARIO");
+		List <String> toIds = new ArrayList<String>();
+		if(to != null && !to.isEmpty()) {
+			String[] tos = to.split(",");
+			
+			for(int i = 0; i < tos.length; i++) {
+				toIds.add(tos[i]);
+			}
+			
+		}
+		
+		for(String toId : toIds) {
+			RecomendacaoTO recomendacao = new RecomendacaoTO();
+			recomendacao.setRecomendador(usuario);
+			recomendacao.setRecomendadoId(toId);
+			recomendacao.setVaga(vagaService.findVagaById(idVaga));
+		}
+		
+		
+		
+		
+		return null;
 	}
 
 }

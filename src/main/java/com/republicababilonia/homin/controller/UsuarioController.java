@@ -1,5 +1,7 @@
 package com.republicababilonia.homin.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,10 +20,25 @@ public class UsuarioController {
 	private UsuarioService usuarioService;
 
 	@RequestMapping("/save")
-	public @ResponseBody String save(String access_token) {
-		UsuarioTO user = FacebookApi.getUsuario(access_token);
+	public @ResponseBody String save(String access_token, HttpServletRequest request, Integer edu) {
 		
-		usuarioService.save(user);
+		String universidade = null;
+		if(edu == 0) {
+			universidade = "UNICAMP";
+		} else if(edu == 1) {
+			universidade = "USP";
+		} else if(edu == 2) {
+			universidade = "ITA";
+		}
+		
+		
+		UsuarioTO user = FacebookApi.getUsuario(access_token);
+		user.setUniversidade(universidade);
+		if(!usuarioService.existeUsuario(user.getUid())) {
+			usuarioService.save(user);
+		}
+		
+		request.getSession().setAttribute("USUARIO", user);
 		String retorno = new Gson().toJson(user);
 		return retorno;
 	}

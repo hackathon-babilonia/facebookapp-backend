@@ -23,4 +23,9 @@ public class UsuarioServiceImpl implements UsuarioService {
 	public void remove(Integer id) {
 		usuarioDAO.remove(id);
 	}
+	
+	@Transactional
+	public Boolean existeUsuario(Long uId){
+		return usuarioDAO.existeUsuario(uId);
+	}
 }

@@ -43,8 +43,8 @@ public class UsuarioTO {
 	@Column(name="token")
 	private String accessToken;
 
-	@Column(name="NUMERO")
-	private Integer universidade;
+	@Column(name="UNIVERSIDADE")
+	private String universidade;
 	
 	@Column(name="DATA_CRIACAO")
 	private Date dataCriacao;
@@ -76,11 +76,11 @@ public class UsuarioTO {
 		this.accessToken = accessToken;
 	}
 
-	public Integer getUniversidade() {
+	public String getUniversidade() {
 		return universidade;
 	}
 
-	public void setUniversidade(Integer universidade) {
+	public void setUniversidade(String universidade) {
 		this.universidade = universidade;
 	}
 

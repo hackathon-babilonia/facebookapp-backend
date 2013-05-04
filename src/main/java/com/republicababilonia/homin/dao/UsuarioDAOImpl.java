@@ -28,6 +28,17 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 		}
 
 	}
+	
+	public Boolean existeUsuario(Long uId) {
+
+		List l =  sessionFactory.getCurrentSession().createQuery("from UsuarioTO where uid = ?").setLong(0, uId)
+				.list();
+		
+		if(l!=null && !l.isEmpty()){
+			return true;
+		}
+		return false;
+	}
 
 
 

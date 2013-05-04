@@ -1,5 +1,7 @@
 package com.republicababilonia.homin.dao;
 
+import java.util.List;
+
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -26,12 +28,12 @@ public class VagaDAOImpl implements VagaDAO {
 
 	}
 	
-//	public LocalTO findVagaById(Integer id) {
-//		List<LocalTO> locais = (List<LocalTO>) sessionFactory.getCurrentSession().createQuery("from LocalTO where id=?").setInteger(0, id).list();
-//		
-//		if(locais != null && !locais.isEmpty()){
-//			return locais.get(0);
-//		}
-//		return null;
-//	}
+	public VagaTO findVagaById(Integer id) {
+		List<VagaTO> vagas = (List<VagaTO>) sessionFactory.getCurrentSession().createQuery("from VagaTO where id=?").setInteger(0, id).list();
+		
+		if(vagas != null && !vagas.isEmpty()){
+			return vagas.get(0);
+		}
+		return null;
+	}
 }
