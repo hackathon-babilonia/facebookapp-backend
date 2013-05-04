@@ -52,12 +52,12 @@ public class Constantes {
 		
 		// Descricao dos tipos de pontos de interesse
 		TIPO_DESCRICAO = new HashMap<Integer, String>();
-		TIPO_DESCRICAO.put(AEROPORTO, "Aeroporto");
-		TIPO_DESCRICAO.put(TERMINAL_RODOVIARIO, "Terminal rodoviário");
+		TIPO_DESCRICAO.put(AEROPORTO, "Airport");
+		TIPO_DESCRICAO.put(TERMINAL_RODOVIARIO, "Bus Station");
 		TIPO_DESCRICAO.put(HOSPITAL, "Hospital");
-		TIPO_DESCRICAO.put(RESTAURANTE, "Restaurante");
-		TIPO_DESCRICAO.put(SUPERMERCADO, "Supermercado");
-		TIPO_DESCRICAO.put(UNIVERSIDADE, "Universidade");
+		TIPO_DESCRICAO.put(RESTAURANTE, "Restaurant");
+		TIPO_DESCRICAO.put(SUPERMERCADO, "Supermarket");
+		TIPO_DESCRICAO.put(UNIVERSIDADE, "University");
 		
 		
 	}

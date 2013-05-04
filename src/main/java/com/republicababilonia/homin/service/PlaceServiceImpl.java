@@ -31,6 +31,11 @@ public class PlaceServiceImpl implements PlaceService {
 	}
 	
 	@Transactional
+	public PlaceTO findPlaceById(Integer id) {
+		return placeDAO.findPlaceById(id);
+	}
+	
+	@Transactional
 	public void removeAll() {
 		placeDAO.removeAll();
 	}

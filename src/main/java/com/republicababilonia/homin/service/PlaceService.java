@@ -10,5 +10,6 @@ public interface PlaceService {
 	public void remove(Integer id);
 	public void removeAll();
 	
+	public PlaceTO findPlaceById(Integer id);
 	public List<PlaceTO> getPlaces(Integer universidade);
 }

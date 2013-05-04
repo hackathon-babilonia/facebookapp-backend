@@ -210,7 +210,7 @@ public class PlaceTO {
 			place.setNome("Hospital das Clínicas");
 			place.setDescricao(Constantes.TIPO_DESCRICAO.get(Constantes.HOSPITAL));
 			place.setUniversidade(Constantes.UNICAMP);
-			place.setLatitude(22.824922);
+			place.setLatitude(-22.824922);
 			place.setLongitude(-47.06646);
 			place.setPic("http://i.imgur.com/O8QSSyE.png?1");
 			place.setPicSmall("http://i.imgur.com/O8QSSyE.png?1");

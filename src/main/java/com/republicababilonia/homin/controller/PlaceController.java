@@ -13,7 +13,6 @@ import com.google.gson.JsonObject;
 import com.republicababilonia.homin.api.FacebookApi;
 import com.republicababilonia.homin.service.PlaceService;
 import com.republicababilonia.homin.to.PlaceTO;
-import com.republicababilonia.homin.utils.Constantes;
 
 @Controller
 @RequestMapping("/place")
@@ -56,6 +55,36 @@ public class PlaceController {
 		obj.addProperty("result", "SUCCESS");
 		return callback+"("+obj.toString()+")";
 		
+	}
+	
+	@RequestMapping("/infowindow")
+	public @ResponseBody String infoWindow(Integer placeId, String callback) {
+
+		PlaceTO place = placeService.findPlaceById(placeId);
+
+		StringBuffer sb = new StringBuffer();
+		String enderecoFormatado = null;
+		String sexoTipoDistanciaUniversidade = null;
+		String preco = null;
+		String descricao = null;
+
+		sb.append("<div class=\"infowindow\">");
+		sb.append("<div class=\"titulo\">");
+		sb.append(place.getNome());
+		sb.append("</div>");
+		sb.append("<div class=\"leftColumn\">");
+		sb.append("<img src=\""+ place.getPic() +"\" />");
+		sb.append("</div>");
+		sb.append("<div class=\"rightColumn\">");
+		sb.append("<span>"+place.getDescricao() +"</span><br/><br/>");
+		sb.append("</div>");
+		sb.append("</div>");
+		
+		JsonObject obj = new JsonObject();
+		obj.addProperty("content", sb.toString());
+		
+		return callback+"("+obj.toString()+")";
+
 	}
 	
 //

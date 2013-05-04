@@ -36,6 +36,15 @@ public class PlaceDAOImpl implements PlaceDAO {
 
 	}
 	
+	public PlaceTO findPlaceById(Integer id) {
+		List<PlaceTO> locais = (List<PlaceTO>) sessionFactory.getCurrentSession().createQuery("from PlaceTO where id=?").setInteger(0, id).list();
+		
+		if(locais != null && !locais.isEmpty()){
+			return locais.get(0);
+		}
+		return null;
+	}
+	
 	public void removeAll() {
 		sessionFactory.getCurrentSession().createQuery("delete from PlaceTO").executeUpdate();
 	}

@@ -6,9 +6,10 @@ import com.republicababilonia.homin.to.PlaceTO;
 
 public interface PlaceDAO {
 	
-	public List<PlaceTO> getPlaces(Integer universidade);
-	
 	public void save(PlaceTO place);
 	public void remove(Integer id);
 	public void removeAll();
+	
+	public PlaceTO findPlaceById(Integer id);
+	public List<PlaceTO> getPlaces(Integer universidade);
 }
