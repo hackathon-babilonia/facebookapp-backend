@@ -22,7 +22,7 @@ public class UsuarioController {
 	private UsuarioService usuarioService;
 
 	@RequestMapping("/save")
-	public @ResponseBody String save(String access_token, HttpServletRequest request, Integer edu) {
+	public @ResponseBody String save(String access_token, HttpServletRequest request, Integer edu, String callback) {
 		
 		String universidade = null;
 		if(edu == 0) {
@@ -44,10 +44,11 @@ public class UsuarioController {
 
 		
 		request.getSession().setAttribute("USUARIO", user);
-		String retorno = new Gson().toJson(user);
+		
+		
 		JsonObject obj = new JsonObject();
 		obj.addProperty("result", "SUCCESS");
-		return obj.toString();
+		return callback+"("+obj.toString()+")";
 	}
 	
 	

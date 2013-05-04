@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.republicababilonia.homin.api.FacebookApi;
 import com.republicababilonia.homin.service.PlaceService;
 import com.republicababilonia.homin.to.PlaceTO;
@@ -22,7 +23,7 @@ public class PlaceController {
 	private PlaceService placeService;
 
 	@RequestMapping("/list")
-	public @ResponseBody String listPlaces(Integer universidade) {
+	public @ResponseBody String listPlaces(Integer universidade, String callback) {
 
 		List<PlaceTO> placesBD = placeService.getPlaces(universidade);
 		
@@ -31,11 +32,11 @@ public class PlaceController {
 		
 		String retorno = new Gson().toJson(places);
 		
-		return retorno;
+		return callback+"("+retorno+")";
 	}
 	
 	@RequestMapping("/popular")
-	public @ResponseBody void popularPlaces(Integer universidade, String accessToken) {
+	public @ResponseBody String popularPlaces(Integer universidade, String accessToken, String callback) {
 
 		placeService.removeAll();
 		
@@ -47,6 +48,9 @@ public class PlaceController {
 		for (PlaceTO place : places) {
 			placeService.save(place);
 		}
+		JsonObject obj = new JsonObject();
+		obj.addProperty("result", "SUCCESS");
+		return callback+"("+obj.toString()+")";
 		
 	}
 	
