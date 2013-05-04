@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -22,7 +24,7 @@ public class LocalTO {
 	public static String PENSIONATO = "PENSIONATO";
 	public static String APARTAMENTO = "APARTAMENTO";
 	
-	public LocalTO(String tipo) {
+	public LocalTO(Long tipo) {
 		this.dataCriacao = Calendar.getInstance().getTime();
 		this.tipo = tipo;
 	}
@@ -63,7 +65,7 @@ public class LocalTO {
 	private String sexo;
 	
 	@Column(name="TIPO")
-	private String tipo;
+	private Long tipo;
 	
 	@Column(name="LATITUDE")
 	private Double latitude;
@@ -76,6 +78,10 @@ public class LocalTO {
 	
 	@Column(name="DISTANCIA")
 	private Double distance;
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "USUARIO_ID", nullable = false)
+	private UsuarioTO usuario;
 	
 	@OneToMany(fetch = FetchType.EAGER, mappedBy="local")
 	private List<VagaTO> vagas;
@@ -117,12 +123,12 @@ public class LocalTO {
 		this.distance = distancia;
 	}
 	
-	public String getTipo() {
+	public Long getTipo() {
 		return tipo;
 	}
 
 
-	public void setTipo(String tipo) {
+	public void setTipo(Long tipo) {
 		this.tipo = tipo;
 	}
 	
@@ -232,6 +238,12 @@ public class LocalTO {
 
 	public void setLongitude(Double longitude) {
 		this.longitude = longitude;
+	}
+	public UsuarioTO getUsuario() {
+		return usuario;
+	}
+	public void setUsuario(UsuarioTO usuario) {
+		this.usuario = usuario;
 	}
 
 }

@@ -10,7 +10,7 @@ public interface VagaService {
 	
 	public void save(VagaTO vaga);
 	public void remove(Integer id);
-	public List<LocalTO> getLocaisByFilters(String vagatipo, String genero, Double precode, Double precoate, Long veiculo, Double distancia, String faculdade);
+	public List<LocalTO> getLocaisByFilters(Long vagatipo, String genero, Double precode, Double precoate, Long veiculo, Double distancia, String faculdade);
 	public VagaTO findVagaById(Integer id);
 	public void saveRecomendacao(RecomendacaoTO recomendacao);
 	public RecomendacaoTO getRecomendacao(String requestId, Long recomendadoId);

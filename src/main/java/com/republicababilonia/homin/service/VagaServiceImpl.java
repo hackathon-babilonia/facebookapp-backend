@@ -32,7 +32,7 @@ public class VagaServiceImpl implements VagaService {
 	}
 	
 	@Transactional
-	public List<LocalTO> getLocaisByFilters(String vagatipo, String genero,
+	public List<LocalTO> getLocaisByFilters(Long vagatipo, String genero,
 			Double precode, Double precoate, Long veiculo, Double tempo, String faculdade) {
 		Double velocidade = new Double(0);
 		Double distancia = new Double(0);
@@ -67,4 +67,5 @@ public class VagaServiceImpl implements VagaService {
 	public RecomendacaoTO getRecomendacao(String requestId, Long recomendadoId) {
 		return vagaDAO.getRecomendacao(requestId, recomendadoId);
 	}
+
 }
