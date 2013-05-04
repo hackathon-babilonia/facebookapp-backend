@@ -163,6 +163,17 @@ public class PlaceTO {
 		
 		if (universidade.equals(Constantes.UNICAMP)) {
 			place = new PlaceTO();
+			place.setNome("Universidade Estadual de Campinas");
+			place.setDescricao(Constantes.TIPO_DESCRICAO.get(Constantes.UNIVERSIDADE));
+			place.setUniversidade(Constantes.UNICAMP);
+			place.setLatitude(Constantes.UNIVERSIDADE_COORDS.get(Constantes.UNICAMP).get(Constantes.LATITUDE));
+			place.setLongitude(Constantes.UNIVERSIDADE_COORDS.get(Constantes.UNICAMP).get(Constantes.LONGITUDE));
+			place.setPic("http://i.imgur.com/sHq9udH.png?1");
+			place.setPicSmall("http://i.imgur.com/sHq9udH.png?1");
+			place.setTipo(Constantes.UNIVERSIDADE);
+			places.add(place);
+			
+			place = new PlaceTO();
 			place.setNome("Aeroporto de Viracopos");
 			place.setDescricao(Constantes.TIPO_DESCRICAO.get(Constantes.AEROPORTO));
 			place.setUniversidade(Constantes.UNICAMP);
@@ -295,9 +306,28 @@ public class PlaceTO {
 			places.add(place);
 			
 		} else if (universidade.equals(Constantes.USP)) {
+			place = new PlaceTO();
+			place.setNome("Universidade de São Paulo");
+			place.setDescricao(Constantes.TIPO_DESCRICAO.get(Constantes.UNIVERSIDADE));
+			place.setUniversidade(Constantes.USP);
+			place.setLatitude(Constantes.UNIVERSIDADE_COORDS.get(Constantes.USP).get(Constantes.LATITUDE));
+			place.setLongitude(Constantes.UNIVERSIDADE_COORDS.get(Constantes.USP).get(Constantes.LONGITUDE));
+			place.setPic("http://i.imgur.com/CUwF8uo.png?1");
+			place.setPicSmall("http://i.imgur.com/CUwF8uo.png?1");
+			place.setTipo(Constantes.UNIVERSIDADE);
+			places.add(place);
 			
 		} else if (universidade.equals(Constantes.ITA)) {
-			
+			place = new PlaceTO();
+			place.setNome("Instituto Tecnológico de Aeronáutica");
+			place.setDescricao(Constantes.TIPO_DESCRICAO.get(Constantes.UNIVERSIDADE));
+			place.setUniversidade(Constantes.ITA);
+			place.setLatitude(Constantes.UNIVERSIDADE_COORDS.get(Constantes.ITA).get(Constantes.LATITUDE));
+			place.setLongitude(Constantes.UNIVERSIDADE_COORDS.get(Constantes.ITA).get(Constantes.LONGITUDE));
+			place.setPic("http://i.imgur.com/KwnqYRe.png?1?4229");
+			place.setPicSmall("http://i.imgur.com/KwnqYRe.png?1?4229");
+			place.setTipo(Constantes.UNIVERSIDADE);
+			places.add(place);
 		}
 		
 		return places;

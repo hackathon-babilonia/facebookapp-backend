@@ -23,6 +23,7 @@ public class Constantes {
 	public static final Integer	HOSPITAL			= 2;
 	public static final Integer RESTAURANTE			= 3;
 	public static final Integer SUPERMERCADO		= 4;
+	public static final Integer UNIVERSIDADE		= 5;
 	
 	// Descricao tipos de ponto de interesse
 	public static final HashMap<Integer, String> TIPO_DESCRICAO;
@@ -56,6 +57,7 @@ public class Constantes {
 		TIPO_DESCRICAO.put(HOSPITAL, "Hospital");
 		TIPO_DESCRICAO.put(RESTAURANTE, "Restaurante");
 		TIPO_DESCRICAO.put(SUPERMERCADO, "Supermercado");
+		TIPO_DESCRICAO.put(UNIVERSIDADE, "Universidade");
 		
 		
 	}

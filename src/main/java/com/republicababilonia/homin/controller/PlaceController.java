@@ -36,14 +36,18 @@ public class PlaceController {
 	}
 	
 	@RequestMapping("/popular")
-	public @ResponseBody String popularPlaces(Integer universidade, String accessToken, String callback) {
+	public @ResponseBody String popularPlaces(String accessToken, String callback) {
 
 		placeService.removeAll();
 		
 		List<PlaceTO> places = new ArrayList<PlaceTO>();
 		
-		places.addAll(FacebookApi.getPlaces(universidade, accessToken));
-		places.addAll(PlaceTO.getHardcodedPlaces(universidade));
+		places.addAll(FacebookApi.getPlaces(0, accessToken));
+		places.addAll(FacebookApi.getPlaces(1, accessToken));
+		places.addAll(FacebookApi.getPlaces(2, accessToken));
+		places.addAll(PlaceTO.getHardcodedPlaces(0));
+		places.addAll(PlaceTO.getHardcodedPlaces(1));
+		places.addAll(PlaceTO.getHardcodedPlaces(2));
 		
 		for (PlaceTO place : places) {
 			placeService.save(place);

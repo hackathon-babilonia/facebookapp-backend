@@ -78,8 +78,8 @@ public class FacebookApi {
 		List<PlaceTO> places = new ArrayList<PlaceTO>();
 		
 		try {
-			String latitudeParam	= Constantes.UNIVERSIDADE_COORDS.get(Constantes.UNICAMP).get(Constantes.LATITUDE).toString();
-			String longitudeParam	= Constantes.UNIVERSIDADE_COORDS.get(Constantes.UNICAMP).get(Constantes.LONGITUDE).toString();
+			String latitudeParam	= Constantes.UNIVERSIDADE_COORDS.get(universidade).get(Constantes.LATITUDE).toString();
+			String longitudeParam	= Constantes.UNIVERSIDADE_COORDS.get(universidade).get(Constantes.LONGITUDE).toString();
 
 			String safeUrl = URLEncoder.encode(SELECT_PLACES.replace(":latitude", latitudeParam).replace(":longitude", longitudeParam), "UTF-8");
 			HttpGet get = new HttpGet(FQL + safeUrl + "&access_token=" + accessToken);
