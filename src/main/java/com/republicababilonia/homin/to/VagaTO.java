@@ -36,7 +36,7 @@ public class VagaTO {
 	private Date dataCriacao;
 	
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "LOCAL_ID", nullable = false)
 	private LocalTO local;
 
