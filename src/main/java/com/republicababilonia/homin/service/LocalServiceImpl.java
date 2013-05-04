@@ -34,4 +34,11 @@ public class LocalServiceImpl implements LocalService {
 	public LocalTO findLocalById(Integer id) {
 		return localDAO.findLocalById(id);
 	}
+
+	public List<LocalTO> getLocaisByFilters(String vagatipo, String genero,
+			Double precode, Double precoate, String veiculo, Double distancia) {
+		
+		
+		return null;
+	}
 }

@@ -1,6 +1,5 @@
 package com.republicababilonia.homin.controller;
 
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.republicababilonia.homin.service.LocalService;
 import com.republicababilonia.homin.service.VagaService;
 import com.republicababilonia.homin.to.LocalTO;
-import com.republicababilonia.homin.to.RepublicaTO;
 import com.republicababilonia.homin.to.VagaTO;
 
 @Controller
@@ -40,19 +38,19 @@ public class LocalController {
 		return vaga.toString();
 	}
 	
-	@RequestMapping("/createrepublica")
-	public @ResponseBody String createLocal(String nome, String endereco, Integer numero, String cidade, String estado, String tipo) {
-		
-		RepublicaTO republica = new RepublicaTO();
-		republica.setNome(nome);
-		republica.setEndereco(endereco);
-		republica.setNumero(numero);
-		republica.setCidade(cidade);
-		republica.setEstado(estado);
-		localService.save(republica);
-		
-		return null;
-	}
+//	@RequestMapping("/createrepublica")
+//	public @ResponseBody String createLocal(String nome, String endereco, Integer numero, String cidade, String estado, String tipo) {
+//		
+//		RepublicaTO republica = new RepublicaTO();
+//		republica.setNome(nome);
+//		republica.setEndereco(endereco);
+//		republica.setNumero(numero);
+//		republica.setCidade(cidade);
+//		republica.setEstado(estado);
+//		localService.save(republica);
+//		
+//		return null;
+//	}
 	
 	
 	

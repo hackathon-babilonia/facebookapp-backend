@@ -26,15 +26,14 @@ public class VagaTO {
 	private Integer id;
 	
 	
-	@Column(name="NOME")
+	@Column(name="DESCRICAO")
 	private String descricao;
 
-	@Column(name="ENDERECO")
+	@Column(name="PRECO")
 	private String preco;
 	
 	@Column(name="DATA_CRIACAO")
 	private Date dataCriacao;
-	
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "LOCAL_ID", nullable = false)
@@ -89,6 +88,5 @@ public class VagaTO {
 	public void setLocal(LocalTO local) {
 		this.local = local;
 	}
-
 
 }

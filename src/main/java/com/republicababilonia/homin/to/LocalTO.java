@@ -16,9 +16,13 @@ import javax.persistence.Table;
 @Table(name="LOCAL")
 public class LocalTO {
 	
+	public static String REPUBLICA = "REPUBLICA";
+	public static String PENSIONATO = "PENSIONATO";
+	public static String APARTAMENTO = "APARTAMENTO";
 	
-	public LocalTO() {
+	public LocalTO(String tipo) {
 		this.dataCriacao = Calendar.getInstance().getTime();
+		this.tipo = tipo;
 	}
 	
 	@Id
@@ -49,10 +53,25 @@ public class LocalTO {
 	
 	@Column(name="DATA_CRIACAO")
 	private Date dataCriacao;
+	
+	@Column(name="SEXO")
+	private String sexo;
+	
+	@Column(name="TIPO")
+	private String tipo;
+	
 
 	@OneToMany(fetch = FetchType.EAGER)
 	private List<VagaTO> vagas;
 	
+	public String getTipo() {
+		return tipo;
+	}
+
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
 	
 	public Integer getId() {
 		return id;
@@ -134,5 +153,12 @@ public class LocalTO {
 		this.vagas = vagas;
 	}
 
+	public String getSexo() {
+		return sexo;
+	}
+
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
+	}
 
 }

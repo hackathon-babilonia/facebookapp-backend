@@ -2,7 +2,9 @@ package com.republicababilonia.homin.dao;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -41,4 +43,13 @@ public class LocalDAOImpl implements LocalDAO {
 		}
 		return null;
 	}
+	public List<LocalTO> getLocaisByFilters(String vagatipo, String genero, Double precode, Double precoate, String veiculo, Double distancia){
+		Criteria query = sessionFactory.getCurrentSession().createCriteria(LocalTO.class);
+		query.add(Restrictions.eq("local.tipo", vagatipo));
+		query.add(Restrictions.between("preco", precode.toString(), precoate.toString()));
+		
+		
+		return null;
+	}
+	
 }

@@ -10,4 +10,5 @@ public interface LocalDAO {
 	public List<LocalTO> getTodosLocais();
 	public void remove(Integer id);
 	public LocalTO findLocalById(Integer id);
+	public List<LocalTO> getLocaisByFilters(String vagatipo, String genero, Double precode, Double precoate, String veiculo, Double distancia);
 }
